@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form and Table Example</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" required><br>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" required><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br>
+
+        <label for="food">Choice of Food:</label>
+        <input type="checkbox" id="pizza" name="food" value="Pizza">
+        <label for="pizza">Pizza</label>
+        <input type="checkbox" id="burger" name="food" value="Burger">
+        <label for="burger">Burger</label>
+        <input type="checkbox" id="pasta" name="food" value="Pasta">
+        <label for="pasta">Pasta</label>
+        <input type="checkbox" id="sushi" name="food" value="Sushi">
+        <label for="sushi">Sushi</label>
+        <input type="checkbox" id="salad" name="food" value="Salad">
+        <label for="salad">Salad</label><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" required><br>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" required><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Pincode</th>
+                <th>Gender</th>
+                <th>Food</th>
+                <th>State</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById('myForm');
+            const tableBody = document.querySelector('#myTable tbody');
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${form.firstName.value}</td>
+                <td>${form.lastName.value}</td>
+                <td>${form.email.value}</td>
+                <td>${form.address.value}</td>
+                <td>${form.pincode.value}</td>
+                <td>${form.gender.value}</td>
+                <td>${Array.from(form.food).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value).join(', ')}</td>
+                <td>${form.state.value}</td>
+                <td>${form.country.value}</td>
+            `;
+
+            tableBody.appendChild(newRow);
+            form.reset();
+        }
+    </script>
+    <script src="https://app.zenclass.in/sheets/v1/zen/suite/bundle.js"></script>
+</body>
+</html>

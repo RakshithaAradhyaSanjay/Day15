@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination Example</title>
+    <style>
+        /* Add your CSS styles for pagination here */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .page-link {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+        }
+        .page-link:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+        // Create pagination elements
+        const totalPages = 10; // Replace with the actual total number of pages
+        const paginationContainer = document.getElementById('pagination');
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLink = document.createElement('a');
+            pageLink.href = `#page${i}`;
+            pageLink.textContent = i;
+            pageLink.classList.add('page-link');
+            paginationContainer.appendChild(pageLink);
+        }
+
+        // Add event listeners for page navigation (you can customize this)
+        paginationContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('page-link')) {
+                // Handle page navigation here (e.g., show content for the clicked page)
+                const page = event.target.textContent;
+                console.log(`Navigating to page ${page}`);
+            }
+        });
+    </script>
+    <script src="https://app.zenclass.in/sheets/v1/zen/suite/bundle.js"></script>
+</body>
+</html>
